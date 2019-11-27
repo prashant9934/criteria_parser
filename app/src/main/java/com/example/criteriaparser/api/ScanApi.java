@@ -9,6 +9,6 @@ import retrofit2.http.GET;
 
 public interface ScanApi {
 
-    @GET("/data")
+    @GET("data")
     Observable<List<ScanDataApiResponse>> getScanData();
 }
