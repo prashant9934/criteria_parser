@@ -7,13 +7,15 @@ import java.util.List;
 
 import io.reactivex.Observable;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CriteriaParserRepository {
+    private static final String BASE_URL = "https://mp-android-challenge.herokuapp.com";
     private Retrofit retrofit;
-
     public CriteriaParserRepository(){
         retrofit = new Retrofit.Builder()
-                .baseUrl("https://mp-android-challenge.herokuapp.com/data")
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
 
