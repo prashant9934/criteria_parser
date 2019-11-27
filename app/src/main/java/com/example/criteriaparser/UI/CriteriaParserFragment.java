@@ -1,6 +1,8 @@
 package com.example.criteriaparser.UI;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +21,7 @@ import com.example.criteriaparser.interactor.CriteriaParserViewModel;
 import com.example.criteriaparser.model.ScanDataApiResponse;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -26,18 +29,30 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class CriteriaParserFragment extends Fragment {
+public class CriteriaParserFragment extends Fragment implements ScanViewAdapter.HandleOnScanClick {
 
+    public static final String TAG = "exception";
     private CriteriaParserViewModel viewModel;
     private ScanViewBinding binding;
     private CompositeDisposable lifecycle;
     private ScanViewAdapter adapter;
+    private SendDataToActivityOnClick sendDataToActivityOnClick;
+
+    private interface SendDataToActivityOnClick {
+        void handleData(ScanDataApiResponse response);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.scan_view, container, true);
         viewModel = ViewModelProviders.of(this).get(CriteriaParserViewModel.class);
+        lifecycle = new CompositeDisposable();
         init();
         initData();
         return binding.getRoot();
@@ -59,7 +74,7 @@ public class CriteriaParserFragment extends Fragment {
 
                     @Override
                     public void onError(Throwable e) {
-
+                        Log.d(TAG, e.toString());
                     }
 
                     @Override
@@ -79,7 +94,7 @@ public class CriteriaParserFragment extends Fragment {
 
     private void initRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        adapter = new ScanViewAdapter();
+        adapter = new ScanViewAdapter(this);
         binding.scanViewRv.setLayoutManager(layoutManager);
         binding.scanViewRv.setAdapter(adapter);
     }
@@ -88,5 +103,10 @@ public class CriteriaParserFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         lifecycle.clear();
+    }
+
+    @Override
+    public void handleOnClick(ScanDataApiResponse response) {
+
     }
 }

@@ -24,5 +24,4 @@ public class CriteriaParserRepository {
     public Observable<List<ScanDataApiResponse>> getDataFromServer(){
         return retrofit.create(ScanApi.class).getScanData();
     }
-
 }

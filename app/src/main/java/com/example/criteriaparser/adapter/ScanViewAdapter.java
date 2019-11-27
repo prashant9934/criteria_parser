@@ -1,6 +1,8 @@
 package com.example.criteriaparser.adapter;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -15,16 +17,18 @@ import java.util.List;
 
 public class ScanViewAdapter extends RecyclerView.Adapter<ScanViewAdapter.ItemViewHolder> {
 
-    public ScanViewAdapter(){
+    private List<ScanDataApiResponse> data;
+    private HandleOnScanClick handleOnScanClick;
 
+    public ScanViewAdapter(HandleOnScanClick handleOnScanClick) {
+        this.handleOnScanClick = handleOnScanClick;
     }
 
-    private List<ScanDataApiResponse> data;
     @NonNull
     @Override
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ItemScanBinding binding = DataBindingUtil.inflate(LayoutInflater.from(
-                parent.getContext()), R.layout.item_scan, parent, true);
+                parent.getContext()), R.layout.item_scan, parent, false);
         return new ItemViewHolder(binding);
     }
 
@@ -38,19 +42,30 @@ public class ScanViewAdapter extends RecyclerView.Adapter<ScanViewAdapter.ItemVi
         return data == null ? 0 : data.size();
     }
 
-    public class ItemViewHolder extends RecyclerView.ViewHolder{
+    public class ItemViewHolder extends RecyclerView.ViewHolder {
 
         private ItemScanBinding binding;
+
         public ItemViewHolder(@NonNull ItemScanBinding itemView) {
             super(itemView.getRoot());
             binding = itemView;
         }
 
-        public void bind(ScanDataApiResponse response) {
+        public void bind(final ScanDataApiResponse response) {
             binding.name.setText(response.getName());
             binding.tag.setText(response.getTag());
-//            binding.tag.setTextColor(response.getColor().);
+            binding.tag.setTextColor(Color.parseColor(response.getColor()));
+            binding.getRoot().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    handleOnScanClick.handleOnClick(response);
+                }
+            });
         }
+    }
+
+    public interface HandleOnScanClick {
+        void handleOnClick(ScanDataApiResponse response);
     }
 
     public List<ScanDataApiResponse> getData() {
