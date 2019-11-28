@@ -14,7 +14,7 @@ public class DollarOne {
     public String type;
     @SerializedName("values")
     @Expose
-    public List<Integer> values = null;
+    public List<Double> values = null;
     @SerializedName("study_type")
     @Expose
     public String studyType;

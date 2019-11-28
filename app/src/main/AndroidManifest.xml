@@ -13,6 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".activity.NonCustomizableActivity"></activity>
+        <activity android:name=".activity.CustomizableViewActivity" />
         <activity
             android:name=".activity.MainActivity"
             android:screenOrientation="portrait">
@@ -24,7 +26,7 @@
         </activity>
         <activity
             android:name=".activity.CriteriaActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

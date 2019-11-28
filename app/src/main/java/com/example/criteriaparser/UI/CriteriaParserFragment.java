@@ -17,8 +17,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.criteriaparser.R;
 import com.example.criteriaparser.adapter.ScanViewAdapter;
 import com.example.criteriaparser.databinding.ScanViewBinding;
-import com.example.criteriaparser.interactor.CriteriaParserViewModel;
 import com.example.criteriaparser.model.ScanDataApiResponse;
+import com.example.criteriaparser.viewmodel.CriteriaParserViewModel;
 
 import java.util.List;
 

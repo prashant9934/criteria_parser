@@ -9,25 +9,30 @@ import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.criteriaparser.R;
+import com.example.criteriaparser.constants.Constants;
 import com.example.criteriaparser.databinding.ItemCriteriaViewBinding;
 import com.example.criteriaparser.model.Criterium;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ScanViewDetailAdapter extends RecyclerView.Adapter<ScanViewDetailAdapter.DetailViewHolder> {
 
     private List<Criterium> data;
     private Context context;
+    private HandleOnCustomizableCriteriaClick customizableCriteriaClick;
+    private String title;
 
-    public ScanViewDetailAdapter(Context context) {
+    public ScanViewDetailAdapter(Context context,
+                                 HandleOnCustomizableCriteriaClick customizableCriteriaClick) {
         this.context = context;
+        this.customizableCriteriaClick = customizableCriteriaClick;
     }
 
     @NonNull
@@ -57,6 +62,14 @@ public class ScanViewDetailAdapter extends RecyclerView.Adapter<ScanViewDetailAd
         notifyDataSetChanged();
     }
 
+    public void setTitleValue(String title) {
+        this.title = title;
+    }
+
+    public interface HandleOnCustomizableCriteriaClick {
+        void cutomizableCriteriaCliked(List<Double> values, String title, boolean isCustomizable);
+    }
+
     class DetailViewHolder extends RecyclerView.ViewHolder {
 
         private ItemCriteriaViewBinding binding;
@@ -70,7 +83,7 @@ public class ScanViewDetailAdapter extends RecyclerView.Adapter<ScanViewDetailAd
             binding = itemView;
         }
 
-        void bind(Criterium criteria, int position) {
+        void bind(final Criterium criteria, int position) {
             initilize$1(criteria);
             initilize$2(criteria);
             initilize$3(criteria);
@@ -86,7 +99,15 @@ public class ScanViewDetailAdapter extends RecyclerView.Adapter<ScanViewDetailAd
                 ClickableSpan clickableSpan = new ClickableSpan() {
                     @Override
                     public void onClick(@NonNull View view) {
-                        Toast.makeText(context, "$1 clicked", Toast.LENGTH_SHORT).show();
+                        if (criteria.variable.$1.defaultValue == null) {
+                            customizableCriteriaClick.cutomizableCriteriaCliked(
+                                    criteria.variable.$1.values, title, false);
+                        } else {
+                            List<Double> value = new ArrayList<>();
+                            value.add(Double.valueOf(criteria.variable.$1.defaultValue));
+                            customizableCriteriaClick.cutomizableCriteriaCliked(
+                                    value, title, true);
+                        }
                     }
                 };
                 spannableString.setSpan(clickableSpan, criteria.text.indexOf($1), $1.length() + criteria.text.indexOf($1),
@@ -97,7 +118,7 @@ public class ScanViewDetailAdapter extends RecyclerView.Adapter<ScanViewDetailAd
                 ClickableSpan clickableSpan = new ClickableSpan() {
                     @Override
                     public void onClick(@NonNull View view) {
-                        Toast.makeText(context, "$2 clicked", Toast.LENGTH_SHORT).show();
+                        customizableCriteriaClick.cutomizableCriteriaCliked(criteria.variable.$2.values, title, false);
                     }
                 };
                 spannableString.setSpan(clickableSpan, criteria.text.indexOf($2), $2.length() + criteria.text.indexOf($2),
@@ -108,7 +129,7 @@ public class ScanViewDetailAdapter extends RecyclerView.Adapter<ScanViewDetailAd
                 ClickableSpan clickableSpan = new ClickableSpan() {
                     @Override
                     public void onClick(@NonNull View view) {
-                        Toast.makeText(context, "$3 clicked", Toast.LENGTH_SHORT).show();
+                        customizableCriteriaClick.cutomizableCriteriaCliked(criteria.variable.$3.values, title, false);
                     }
                 };
                 spannableString.setSpan(clickableSpan, criteria.text.indexOf($3), $3.length() + criteria.text.indexOf($3),
@@ -119,7 +140,10 @@ public class ScanViewDetailAdapter extends RecyclerView.Adapter<ScanViewDetailAd
                 ClickableSpan clickableSpan = new ClickableSpan() {
                     @Override
                     public void onClick(@NonNull View view) {
-                        Toast.makeText(context, "$4 clicked", Toast.LENGTH_SHORT).show();
+                        List<Double> value = new ArrayList<>();
+                        value.add(Double.valueOf(criteria.variable.$4.defaultValue));
+                        customizableCriteriaClick.cutomizableCriteriaCliked(
+                                value, title, true);
                     }
                 };
                 spannableString.setSpan(clickableSpan, criteria.text.indexOf($4), $4.length() + criteria.text.indexOf($4),
@@ -131,40 +155,40 @@ public class ScanViewDetailAdapter extends RecyclerView.Adapter<ScanViewDetailAd
         }
 
         private void initilize$1(Criterium criteria) {
-            if (criteria.text.contains("$1")) {
+            if (criteria.text.contains(Constants.Extras.$1)) {
                 if (criteria.variable.$1.defaultValue != null) {
                     $1 = "(" + criteria.variable.$1.defaultValue + ")";
-                    criteria.text = criteria.text.replace("$1", $1);
+                    criteria.text = criteria.text.replace(Constants.Extras.$1, $1);
                 } else if (criteria.variable.$1.values.size() > 0) {
                     $1 = "(" + criteria.variable.$1.values.get(0) + ")";
-                    criteria.text = criteria.text.replace("$1", $1);
+                    criteria.text = criteria.text.replace(Constants.Extras.$1, $1);
                 }
             }
         }
 
         private void initilize$2(Criterium criteria) {
-            if (criteria.text.contains("$2")) {
+            if (criteria.text.contains(Constants.Extras.$2)) {
                 if (criteria.variable.$2.values.size() > 0) {
                     $2 = "(" + criteria.variable.$2.values.get(0) + ")";
-                    criteria.text = criteria.text.replace("$2", $2);
+                    criteria.text = criteria.text.replace(Constants.Extras.$2, $2);
                 }
             }
         }
 
         private void initilize$3(Criterium criteria) {
-            if (criteria.text.contains("$3")) {
+            if (criteria.text.contains(Constants.Extras.$3)) {
                 if (criteria.variable.$3.values.size() > 0) {
                     $3 = "(" + criteria.variable.$3.values.get(0) + ")";
-                    criteria.text = criteria.text.replace("$3", $3);
+                    criteria.text = criteria.text.replace(Constants.Extras.$3, $3);
                 }
             }
         }
 
         private void initilize$4(Criterium criteria) {
-            if (criteria.text.contains("$4")) {
+            if (criteria.text.contains(Constants.Extras.$4)) {
                 if (criteria.variable.$4.defaultValue != null) {
                     $4 = "(" + criteria.variable.$4.defaultValue + ")";
-                    criteria.text = criteria.text.replace("$4", $4);
+                    criteria.text = criteria.text.replace(Constants.Extras.$4, $4);
                 }
             }
         }

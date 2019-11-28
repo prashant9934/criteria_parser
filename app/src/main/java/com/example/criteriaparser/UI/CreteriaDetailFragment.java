@@ -1,5 +1,6 @@
 package com.example.criteriaparser.UI;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.criteriaparser.R;
 import com.example.criteriaparser.adapter.ScanViewDetailAdapter;
+import com.example.criteriaparser.constants.Constants;
 import com.example.criteriaparser.databinding.CriteriaDetailViewBinding;
 import com.example.criteriaparser.model.ScanDataApiResponse;
 
@@ -21,8 +23,20 @@ import java.util.Objects;
 
 public class CreteriaDetailFragment extends Fragment {
 
+    public static final int BEGIN_INDEX = 0;
     private CriteriaDetailViewBinding binding;
     private ScanDataApiResponse data;
+    private ScanViewDetailAdapter.HandleOnCustomizableCriteriaClick handleOnCustomizableCriteriaClick;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            handleOnCustomizableCriteriaClick = (ScanViewDetailAdapter.HandleOnCustomizableCriteriaClick) context;
+        } catch (ClassCastException exception) {
+            throw new ClassCastException(exception.getLocalizedMessage());
+        }
+    }
 
     @Nullable
     @Override
@@ -39,9 +53,10 @@ public class CreteriaDetailFragment extends Fragment {
 
     private void initRv() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        ScanViewDetailAdapter adapter = new ScanViewDetailAdapter(getContext());
+        ScanViewDetailAdapter adapter = new ScanViewDetailAdapter(getContext(), handleOnCustomizableCriteriaClick);
         binding.criteriaDetailRV.setLayoutManager(layoutManager);
         binding.criteriaDetailRV.setAdapter(adapter);
+        adapter.setTitleValue(data.name.substring(BEGIN_INDEX, data.name.indexOf(Constants.Extras.SPACE)));
         adapter.setData(data.criteria);
     }
 

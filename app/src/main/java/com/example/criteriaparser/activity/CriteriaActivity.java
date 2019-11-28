@@ -7,12 +7,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.criteriaparser.R;
 import com.example.criteriaparser.UI.CreteriaDetailFragment;
+import com.example.criteriaparser.adapter.ScanViewDetailAdapter;
 import com.example.criteriaparser.constants.Constants;
 import com.example.criteriaparser.model.ScanDataApiResponse;
 
 import org.parceler.Parcels;
 
-public class CriteriaActivity extends AppCompatActivity {
+import java.util.List;
+
+public class CriteriaActivity extends AppCompatActivity implements ScanViewDetailAdapter.HandleOnCustomizableCriteriaClick {
+
+    public static final int BASE_INDEX = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,5 +32,19 @@ public class CriteriaActivity extends AppCompatActivity {
         detailFragment.setScanData(data);
         getSupportFragmentManager().beginTransaction().replace(R.id.scan_detail_fragment,
                 detailFragment).commit();
+    }
+
+    @Override
+    public void cutomizableCriteriaCliked(List<Double> values, String title, boolean isCustomizable) {
+        if (isCustomizable) {
+            Intent intent = new Intent(this, CustomizableViewActivity.class);
+            intent.putExtra(Constants.Extras.CUSTOMIZABLE_VALUE, String.valueOf(values.get(BASE_INDEX)));
+            intent.putExtra(Constants.Extras.TITLE, title);
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent(this, NonCustomizableActivity.class);
+            intent.putExtra(Constants.Extras.NON_CUSTOMIZABLE_VALUE, Parcels.wrap(values));
+            startActivity(intent);
+        }
     }
 }

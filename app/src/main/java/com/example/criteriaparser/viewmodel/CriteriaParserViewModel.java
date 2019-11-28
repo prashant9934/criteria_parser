@@ -1,4 +1,4 @@
-package com.example.criteriaparser.interactor;
+package com.example.criteriaparser.viewmodel;
 
 import android.app.Application;
 
