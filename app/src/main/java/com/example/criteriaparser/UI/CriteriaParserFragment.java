@@ -21,7 +21,6 @@ import com.example.criteriaparser.interactor.CriteriaParserViewModel;
 import com.example.criteriaparser.model.ScanDataApiResponse;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -38,19 +37,24 @@ public class CriteriaParserFragment extends Fragment implements ScanViewAdapter.
     private ScanViewAdapter adapter;
     private SendDataToActivityOnClick sendDataToActivityOnClick;
 
-    private interface SendDataToActivityOnClick {
+    public interface SendDataToActivityOnClick {
         void handleData(ScanDataApiResponse response);
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        try {
+            sendDataToActivityOnClick = (SendDataToActivityOnClick) context;
+        } catch (ClassCastException exception) {
+            throw new ClassCastException(exception.getLocalizedMessage());
+        }
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.scan_view, container, true);
+        binding = DataBindingUtil.inflate(inflater, R.layout.scan_view, container, false);
         viewModel = ViewModelProviders.of(this).get(CriteriaParserViewModel.class);
         lifecycle = new CompositeDisposable();
         init();
@@ -85,6 +89,7 @@ public class CriteriaParserFragment extends Fragment implements ScanViewAdapter.
     }
 
     private void populateDataOnRecyclerView(List<ScanDataApiResponse> scanDataApiResponse) {
+        binding.progressBar.setVisibility(View.GONE);
         adapter.setData(scanDataApiResponse);
     }
 
@@ -107,6 +112,6 @@ public class CriteriaParserFragment extends Fragment implements ScanViewAdapter.
 
     @Override
     public void handleOnClick(ScanDataApiResponse response) {
-
+        sendDataToActivityOnClick.handleData(response);
     }
 }

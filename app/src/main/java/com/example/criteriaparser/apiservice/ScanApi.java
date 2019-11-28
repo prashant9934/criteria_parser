@@ -1,4 +1,4 @@
-package com.example.criteriaparser.api;
+package com.example.criteriaparser.apiservice;
 
 import com.example.criteriaparser.model.ScanDataApiResponse;
 

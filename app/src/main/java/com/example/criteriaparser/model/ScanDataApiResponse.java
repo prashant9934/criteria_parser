@@ -3,62 +3,25 @@ package com.example.criteriaparser.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
 import java.util.List;
 
+@Parcel
 public class ScanDataApiResponse {
     @SerializedName("id")
     @Expose
-    private Integer id;
+    public Integer id;
     @SerializedName("name")
     @Expose
-    private String name;
+    public String name;
     @SerializedName("tag")
     @Expose
-    private String tag;
+    public String tag;
     @SerializedName("color")
     @Expose
-    private String color;
+    public String color;
     @SerializedName("criteria")
     @Expose
-    private List<Criterium> criteria = null;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getTag() {
-        return tag;
-    }
-
-    public void setTag(String tag) {
-        this.tag = tag;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public List<Criterium> getCriteria() {
-        return criteria;
-    }
-
-    public void setCriteria(List<Criterium> criteria) {
-        this.criteria = criteria;
-    }
+    public List<Criterium> criteria = null;
 }

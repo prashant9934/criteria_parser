@@ -33,24 +33,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_normal"
             android:layout_marginEnd="@dimen/spacing_small"
-            android:layout_marginBottom="@dimen/spacing_normal"
-            android:textColor="@color/green"
+            android:layout_marginTop="@dimen/spacing_normal"
             android:textSize="@dimen/slightly_small"
-            app:layout_constraintBottom_toTopOf="@id/dotted_view"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/name"
             tool:text="@string/intraday_bullish" />
 
-        <View
-            android:id="@+id/dotted_view"
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:background="@drawable/dash_line"
-            android:layerType="software"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tag" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

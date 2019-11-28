@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Criteria Parser</string>
     <string name="intraday_bullish">Intraday bullish</string>
+    <string name="and">and</string>
 </resources>

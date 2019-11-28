@@ -52,9 +52,9 @@ public class ScanViewAdapter extends RecyclerView.Adapter<ScanViewAdapter.ItemVi
         }
 
         public void bind(final ScanDataApiResponse response) {
-            binding.name.setText(response.getName());
-            binding.tag.setText(response.getTag());
-            binding.tag.setTextColor(Color.parseColor(response.getColor()));
+            binding.name.setText(response.name);
+            binding.tag.setText(response.tag);
+            binding.tag.setTextColor(Color.parseColor(response.color));
             binding.getRoot().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

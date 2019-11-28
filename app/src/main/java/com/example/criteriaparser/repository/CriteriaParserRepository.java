@@ -1,6 +1,6 @@
 package com.example.criteriaparser.repository;
 
-import com.example.criteriaparser.api.ScanApi;
+import com.example.criteriaparser.apiservice.ScanApi;
 import com.example.criteriaparser.model.ScanDataApiResponse;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
