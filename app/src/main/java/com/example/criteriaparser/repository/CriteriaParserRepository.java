@@ -1,6 +1,7 @@
 package com.example.criteriaparser.repository;
 
 import com.example.criteriaparser.apiservice.ScanApi;
+import com.example.criteriaparser.constants.Constants;
 import com.example.criteriaparser.model.ScanDataApiResponse;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
@@ -11,11 +12,10 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CriteriaParserRepository {
-    private static final String BASE_URL = "https://mp-android-challenge.herokuapp.com/";
     private Retrofit retrofit;
     public CriteriaParserRepository(){
         retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(Constants.NetworkConstants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();

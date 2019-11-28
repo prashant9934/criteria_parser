@@ -13,4 +13,8 @@ public class Constants {
         String SPACE = " ";
         String TITLE = "title";
     }
+
+    public interface NetworkConstants {
+        String BASE_URL = "https://mp-android-challenge.herokuapp.com/";
+    }
 }
