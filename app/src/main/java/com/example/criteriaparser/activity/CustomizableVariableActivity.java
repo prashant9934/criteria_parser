@@ -9,7 +9,7 @@ import com.example.criteriaparser.R;
 import com.example.criteriaparser.UI.CustomizableVariableFragment;
 import com.example.criteriaparser.constants.Constants;
 
-public class CustomizableViewActivity extends AppCompatActivity {
+public class CustomizableVariableActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

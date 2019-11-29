@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.criteriaparser.R;
-import com.example.criteriaparser.adapter.NonCustomizableViewAdapter;
+import com.example.criteriaparser.adapter.NonCustomizableVariableAdapter;
 import com.example.criteriaparser.constants.Constants;
 import com.example.criteriaparser.databinding.ScanViewBinding;
 
@@ -45,7 +45,7 @@ public class NonCustomizableVariableFragment extends Fragment {
 
     private void init() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        NonCustomizableViewAdapter adapter = new NonCustomizableViewAdapter(values);
+        NonCustomizableVariableAdapter adapter = new NonCustomizableVariableAdapter(values);
         binding.scanViewRv.setLayoutManager(layoutManager);
         binding.scanViewRv.setAdapter(adapter);
         binding.progressBar.setVisibility(View.GONE);

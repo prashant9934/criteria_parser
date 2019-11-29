@@ -13,12 +13,12 @@ import com.example.criteriaparser.databinding.ItemScanBinding;
 
 import java.util.List;
 
-public class NonCustomizableViewAdapter extends RecyclerView.Adapter<
-        NonCustomizableViewAdapter.NonCustomizableViewHolder> {
+public class NonCustomizableVariableAdapter extends RecyclerView.Adapter<
+        NonCustomizableVariableAdapter.NonCustomizableViewHolder> {
 
     private List<String> values;
 
-    public NonCustomizableViewAdapter(List<String> values) {
+    public NonCustomizableVariableAdapter(List<String> values) {
         this.values = values;
     }
 

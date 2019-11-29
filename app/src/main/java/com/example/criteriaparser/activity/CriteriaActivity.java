@@ -38,12 +38,12 @@ public class CriteriaActivity extends AppCompatActivity implements ScanViewDetai
     @Override
     public void cutomizableCriteriaCliked(List<String> values, String title, boolean isCustomizable) {
         if (isCustomizable) {
-            Intent intent = new Intent(this, CustomizableViewActivity.class);
+            Intent intent = new Intent(this, CustomizableVariableActivity.class);
             intent.putExtra(Constants.Extras.CUSTOMIZABLE_VALUE, values.get(BASE_INDEX));
             intent.putExtra(Constants.Extras.TITLE, title);
             startActivity(intent);
         } else {
-            Intent intent = new Intent(this, NonCustomizableActivity.class);
+            Intent intent = new Intent(this, NonCustomizableVariableActivity.class);
             intent.putExtra(Constants.Extras.NON_CUSTOMIZABLE_VALUE, Parcels.wrap(values));
             startActivity(intent);
         }

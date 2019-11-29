@@ -14,7 +14,7 @@ import org.parceler.Parcels;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NonCustomizableActivity extends AppCompatActivity {
+public class NonCustomizableVariableActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
