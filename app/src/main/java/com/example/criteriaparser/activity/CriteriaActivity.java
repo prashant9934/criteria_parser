@@ -23,6 +23,7 @@ public class CriteriaActivity extends AppCompatActivity implements ScanViewDetai
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_criteria);
+        getSupportActionBar().hide();
         Intent intent = getIntent();
         ScanDataApiResponse data = new ScanDataApiResponse();
         if (intent.hasExtra(Constants.Extras.CRITERIUM_SCAN_DATA)) {

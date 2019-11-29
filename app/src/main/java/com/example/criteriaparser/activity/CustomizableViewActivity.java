@@ -15,6 +15,7 @@ public class CustomizableViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customizable_view);
+        getSupportActionBar().hide();
         Intent intent = getIntent();
         String title = intent.getExtras().getString(Constants.Extras.TITLE);
         CustomizableVariableFragment fragment = CustomizableVariableFragment.getInstance(

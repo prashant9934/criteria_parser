@@ -1,13 +1,10 @@
 package com.example.criteriaparser.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.ViewGroup;
 
-import com.bluelinelabs.conductor.Conductor;
-import com.bluelinelabs.conductor.Router;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.criteriaparser.R;
 import com.example.criteriaparser.UI.CriteriaParserFragment;
 import com.example.criteriaparser.constants.Constants;
@@ -22,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
     }
 
     @Override

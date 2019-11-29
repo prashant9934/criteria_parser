@@ -20,6 +20,7 @@ public class NonCustomizableActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_non_customizable);
+        getSupportActionBar().hide();
         Intent intent = getIntent();
         List<String> values = new ArrayList<>();
         if (intent.hasExtra(Constants.Extras.NON_CUSTOMIZABLE_VALUE))

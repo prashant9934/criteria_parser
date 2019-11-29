@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.criteriaparser.R;
 import com.example.criteriaparser.adapter.ScanViewAdapter;
+import com.example.criteriaparser.basicutils.BasicUtils;
 import com.example.criteriaparser.databinding.ScanViewBinding;
 import com.example.criteriaparser.model.ScanDataApiResponse;
 import com.example.criteriaparser.viewmodel.CriteriaParserViewModel;
@@ -36,6 +37,7 @@ public class CriteriaParserFragment extends Fragment implements ScanViewAdapter.
     private CompositeDisposable lifecycle;
     private ScanViewAdapter adapter;
     private SendDataToActivityOnClick sendDataToActivityOnClick;
+    private Context context;
 
     public interface SendDataToActivityOnClick {
         void handleData(ScanDataApiResponse response);
@@ -44,6 +46,7 @@ public class CriteriaParserFragment extends Fragment implements ScanViewAdapter.
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        this.context = context;
         try {
             sendDataToActivityOnClick = (SendDataToActivityOnClick) context;
         } catch (ClassCastException exception) {
@@ -63,6 +66,11 @@ public class CriteriaParserFragment extends Fragment implements ScanViewAdapter.
     }
 
     private void initData() {
+        if (!BasicUtils.isNetworkAvailable(context)) {
+            binding.scanViewRv.setVisibility(View.INVISIBLE);
+            binding.progressBar.setVisibility(View.INVISIBLE);
+            binding.noInternetView.setVisibility(View.VISIBLE);
+        }
         viewModel.getScanData().subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<List<ScanDataApiResponse>>() {
