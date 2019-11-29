@@ -6,7 +6,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.criteriaparser.R;
-import com.example.criteriaparser.UI.CreteriaDetailFragment;
+import com.example.criteriaparser.UI.CriteriaDetailFragment;
 import com.example.criteriaparser.adapter.ScanViewDetailAdapter;
 import com.example.criteriaparser.constants.Constants;
 import com.example.criteriaparser.model.ScanDataApiResponse;
@@ -29,7 +29,7 @@ public class CriteriaActivity extends AppCompatActivity implements ScanViewDetai
         if (intent.hasExtra(Constants.Extras.CRITERIUM_SCAN_DATA)) {
             data = Parcels.unwrap(intent.getExtras().getParcelable(Constants.Extras.CRITERIUM_SCAN_DATA));
         }
-        CreteriaDetailFragment detailFragment = new CreteriaDetailFragment();
+        CriteriaDetailFragment detailFragment = new CriteriaDetailFragment();
         detailFragment.setScanData(data);
         getSupportFragmentManager().beginTransaction().replace(R.id.scan_detail_fragment,
                 detailFragment).commit();

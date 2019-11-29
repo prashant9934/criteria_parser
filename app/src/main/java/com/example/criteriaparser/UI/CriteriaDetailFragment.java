@@ -21,7 +21,7 @@ import com.example.criteriaparser.model.ScanDataApiResponse;
 
 import java.util.Objects;
 
-public class CreteriaDetailFragment extends Fragment {
+public class CriteriaDetailFragment extends Fragment {
 
     private static final int BEGIN_INDEX = 0;
     private CriteriaDetailViewBinding binding;

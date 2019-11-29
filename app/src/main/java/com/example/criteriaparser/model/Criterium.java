@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import org.parceler.Parcel;
 
 @Parcel
-public class Criterium extends BaseCriterium{
+public class Criterium {
 
     @SerializedName("type")
     @Expose

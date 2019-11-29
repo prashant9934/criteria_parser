@@ -14,8 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.NonCustomizableVariableActivity"></activity>
-        <activity android:name=".activity.CustomizableVariableActivity" />
+        <activity
+            android:name=".activity.NonCustomizableVariableActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.CustomizableVariableActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.MainActivity"
             android:screenOrientation="portrait">
