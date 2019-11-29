@@ -68,7 +68,7 @@ public class ScanViewDetailAdapter extends RecyclerView.Adapter<ScanViewDetailAd
     }
 
     public interface HandleOnCustomizableCriteriaClick {
-        void cutomizableCriteriaCliked(List<Double> values, String title, boolean isCustomizable);
+        void cutomizableCriteriaCliked(List<String> values, String title, boolean isCustomizable);
     }
 
     class DetailViewHolder extends RecyclerView.ViewHolder {
@@ -104,8 +104,8 @@ public class ScanViewDetailAdapter extends RecyclerView.Adapter<ScanViewDetailAd
                             customizableCriteriaClick.cutomizableCriteriaCliked(
                                     criteria.variable.$1.values, title, false);
                         } else {
-                            List<Double> value = new ArrayList<>();
-                            value.add(Double.valueOf(criteria.variable.$1.defaultValue));
+                            List<String> value = new ArrayList<>();
+                            value.add(criteria.variable.$1.defaultValue);
                             customizableCriteriaClick.cutomizableCriteriaCliked(
                                     value, title, true);
                         }
@@ -159,8 +159,8 @@ public class ScanViewDetailAdapter extends RecyclerView.Adapter<ScanViewDetailAd
                 ClickableSpan clickableSpan = new ClickableSpan() {
                     @Override
                     public void onClick(@NonNull View view) {
-                        List<Double> value = new ArrayList<>();
-                        value.add(Double.valueOf(criteria.variable.$4.defaultValue));
+                        List<String> value = new ArrayList<>();
+                        value.add(criteria.variable.$4.defaultValue);
                         customizableCriteriaClick.cutomizableCriteriaCliked(
                                 value, title, true);
                     }

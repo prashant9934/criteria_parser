@@ -6,7 +6,8 @@
     <dimen name="spacing_normal">16dp</dimen>
     <dimen name="slightly_large">22sp</dimen>
     <dimen name="spacing_extra_large">80dp</dimen>
-    <dimen name="dimen200dp">200dp</dimen>
+    <dimen name="dimen200dp">175dp</dimen>
     <dimen name="spacing_slightly_large">20dp</dimen>
     <dimen name="spacing_large">28dp</dimen>
+    <dimen name="dimen2dip">2dp</dimen>
 </resources>

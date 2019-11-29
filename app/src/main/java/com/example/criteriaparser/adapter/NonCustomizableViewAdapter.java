@@ -16,9 +16,9 @@ import java.util.List;
 public class NonCustomizableViewAdapter extends RecyclerView.Adapter<
         NonCustomizableViewAdapter.NonCustomizableViewHolder> {
 
-    private List<Double> values;
+    private List<String> values;
 
-    public NonCustomizableViewAdapter(List<Double> values) {
+    public NonCustomizableViewAdapter(List<String> values) {
         this.values = values;
     }
 
@@ -40,7 +40,7 @@ public class NonCustomizableViewAdapter extends RecyclerView.Adapter<
         return values != null ? values.size() : 0;
     }
 
-    public void setValues(List<Double> values) {
+    public void setValues(List<String> values) {
         this.values = values;
         notifyDataSetChanged();
     }
@@ -53,7 +53,7 @@ public class NonCustomizableViewAdapter extends RecyclerView.Adapter<
             binding = itemView;
         }
 
-        void bind(Double value) {
+        void bind(String value) {
             binding.tag.setVisibility(View.GONE);
             binding.name.setText(String.valueOf(value));
         }

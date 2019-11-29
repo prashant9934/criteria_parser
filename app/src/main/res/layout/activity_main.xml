@@ -8,5 +8,5 @@
         android:id="@+id/scan_list_view"
         android:name="com.example.criteriaparser.UI.CriteriaParserFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent" />
 </FrameLayout>

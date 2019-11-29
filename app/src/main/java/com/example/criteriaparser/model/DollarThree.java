@@ -14,5 +14,5 @@ public class DollarThree {
     public String type;
     @SerializedName("values")
     @Expose
-    public List<Double> values = null;
+    public List<String> values = null;
 }

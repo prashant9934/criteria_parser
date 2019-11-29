@@ -21,7 +21,7 @@ public class NonCustomizableActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_non_customizable);
         Intent intent = getIntent();
-        List<Double> values = new ArrayList<>();
+        List<String> values = new ArrayList<>();
         if (intent.hasExtra(Constants.Extras.NON_CUSTOMIZABLE_VALUE))
             values = Parcels.unwrap(intent.getParcelableExtra(Constants.Extras.NON_CUSTOMIZABLE_VALUE));
         NonCustomizableVariableFragment fragment = NonCustomizableVariableFragment.getInstance(values);

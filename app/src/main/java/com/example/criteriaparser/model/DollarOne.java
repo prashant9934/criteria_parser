@@ -14,7 +14,7 @@ public class DollarOne {
     public String type;
     @SerializedName("values")
     @Expose
-    public List<Double> values = null;
+    public List<String> values = null;
     @SerializedName("study_type")
     @Expose
     public String studyType;
@@ -29,5 +29,5 @@ public class DollarOne {
     public Integer maxValue;
     @SerializedName("default_value")
     @Expose
-    public Integer defaultValue;
+    public String defaultValue;
 }

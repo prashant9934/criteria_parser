@@ -23,7 +23,7 @@ import java.util.Objects;
 
 public class CreteriaDetailFragment extends Fragment {
 
-    public static final int BEGIN_INDEX = 0;
+    private static final int BEGIN_INDEX = 0;
     private CriteriaDetailViewBinding binding;
     private ScanDataApiResponse data;
     private ScanViewDetailAdapter.HandleOnCustomizableCriteriaClick handleOnCustomizableCriteriaClick;

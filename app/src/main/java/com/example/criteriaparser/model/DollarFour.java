@@ -24,5 +24,5 @@ public class DollarFour {
     public Integer maxValue;
     @SerializedName("default_value")
     @Expose
-    public Integer defaultValue;
+    public String defaultValue;
 }

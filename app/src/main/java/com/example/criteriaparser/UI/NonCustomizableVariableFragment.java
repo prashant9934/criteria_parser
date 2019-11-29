@@ -23,13 +23,13 @@ import java.util.List;
 public class NonCustomizableVariableFragment extends Fragment {
 
     private ScanViewBinding binding;
-    private List<Double> values;
+    private List<String> values;
 
     public NonCustomizableVariableFragment(Bundle extras) {
         values = Parcels.unwrap(extras.getParcelable(Constants.Extras.NON_CUSTOMIZABLE_VALUE));
     }
 
-    public static NonCustomizableVariableFragment getInstance(List<Double> values) {
+    public static NonCustomizableVariableFragment getInstance(List<String> values) {
         Bundle extras = new Bundle();
         extras.putParcelable(Constants.Extras.NON_CUSTOMIZABLE_VALUE, Parcels.wrap(values));
         return new NonCustomizableVariableFragment(extras);
