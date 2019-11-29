@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.text.SpannableString;
 import android.text.Spanned;
+import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
@@ -109,6 +110,12 @@ public class ScanViewDetailAdapter extends RecyclerView.Adapter<ScanViewDetailAd
                                     value, title, true);
                         }
                     }
+
+                    @Override
+                    public void updateDrawState(@NonNull TextPaint ds) {
+                        super.updateDrawState(ds);
+                        ds.setColor(Color.BLUE);
+                    }
                 };
                 spannableString.setSpan(clickableSpan, criteria.text.indexOf($1), $1.length() + criteria.text.indexOf($1),
                         Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -120,6 +127,12 @@ public class ScanViewDetailAdapter extends RecyclerView.Adapter<ScanViewDetailAd
                     public void onClick(@NonNull View view) {
                         customizableCriteriaClick.cutomizableCriteriaCliked(criteria.variable.$2.values, title, false);
                     }
+
+                    @Override
+                    public void updateDrawState(@NonNull TextPaint ds) {
+                        super.updateDrawState(ds);
+                        ds.setColor(Color.BLUE);
+                    }
                 };
                 spannableString.setSpan(clickableSpan, criteria.text.indexOf($2), $2.length() + criteria.text.indexOf($2),
                         Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -130,6 +143,12 @@ public class ScanViewDetailAdapter extends RecyclerView.Adapter<ScanViewDetailAd
                     @Override
                     public void onClick(@NonNull View view) {
                         customizableCriteriaClick.cutomizableCriteriaCliked(criteria.variable.$3.values, title, false);
+                    }
+
+                    @Override
+                    public void updateDrawState(@NonNull TextPaint ds) {
+                        super.updateDrawState(ds);
+                        ds.setColor(Color.BLUE);
                     }
                 };
                 spannableString.setSpan(clickableSpan, criteria.text.indexOf($3), $3.length() + criteria.text.indexOf($3),
@@ -145,13 +164,19 @@ public class ScanViewDetailAdapter extends RecyclerView.Adapter<ScanViewDetailAd
                         customizableCriteriaClick.cutomizableCriteriaCliked(
                                 value, title, true);
                     }
+
+                    @Override
+                    public void updateDrawState(@NonNull TextPaint ds) {
+                        super.updateDrawState(ds);
+                        ds.setColor(Color.BLUE);
+                    }
                 };
                 spannableString.setSpan(clickableSpan, criteria.text.indexOf($4), $4.length() + criteria.text.indexOf($4),
                         Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
             binding.name.setText(spannableString);
             binding.name.setMovementMethod(LinkMovementMethod.getInstance());
-            binding.name.setHighlightColor(Color.BLUE);
+            binding.name.setHighlightColor(Color.LTGRAY);
         }
 
         private void initilize$1(Criterium criteria) {
