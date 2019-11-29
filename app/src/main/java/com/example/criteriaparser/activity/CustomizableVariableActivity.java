@@ -17,7 +17,9 @@ public class CustomizableVariableActivity extends AppCompatActivity {
         setContentView(R.layout.activity_customizable_view);
         getSupportActionBar().hide();
         Intent intent = getIntent();
-        String title = intent.getExtras().getString(Constants.Extras.TITLE);
+        String title = "";
+        if (intent.hasExtra(Constants.Extras.TITLE))
+            title = intent.getExtras().getString(Constants.Extras.TITLE);
         CustomizableVariableFragment fragment = CustomizableVariableFragment.getInstance(
                 intent.getExtras().getString(Constants.Extras.CUSTOMIZABLE_VALUE), title);
         getSupportFragmentManager().beginTransaction().replace(

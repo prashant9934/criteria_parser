@@ -31,7 +31,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class CriteriaParserFragment extends Fragment implements ScanViewAdapter.HandleOnScanClick {
 
-    public static final String TAG = "exception";
+    private static final String TAG = "exception";
     private CriteriaParserViewModel viewModel;
     private ScanViewBinding binding;
     private CompositeDisposable lifecycle;

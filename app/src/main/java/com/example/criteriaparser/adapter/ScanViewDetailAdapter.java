@@ -54,10 +54,6 @@ public class ScanViewDetailAdapter extends RecyclerView.Adapter<ScanViewDetailAd
         return data != null ? data.size() : 0;
     }
 
-    public List<Criterium> getData() {
-        return data;
-    }
-
     public void setData(List<Criterium> data) {
         this.data = data;
         notifyDataSetChanged();

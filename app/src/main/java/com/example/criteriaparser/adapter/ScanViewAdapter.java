@@ -42,16 +42,16 @@ public class ScanViewAdapter extends RecyclerView.Adapter<ScanViewAdapter.ItemVi
         return data == null ? 0 : data.size();
     }
 
-    public class ItemViewHolder extends RecyclerView.ViewHolder {
+    class ItemViewHolder extends RecyclerView.ViewHolder {
 
         private ItemScanBinding binding;
 
-        public ItemViewHolder(@NonNull ItemScanBinding itemView) {
+        ItemViewHolder(@NonNull ItemScanBinding itemView) {
             super(itemView.getRoot());
             binding = itemView;
         }
 
-        public void bind(final ScanDataApiResponse response) {
+        void bind(final ScanDataApiResponse response) {
             binding.name.setText(response.name);
             binding.tag.setText(response.tag);
             binding.tag.setTextColor(Color.parseColor(response.color));
@@ -66,10 +66,6 @@ public class ScanViewAdapter extends RecyclerView.Adapter<ScanViewAdapter.ItemVi
 
     public interface HandleOnScanClick {
         void handleOnClick(ScanDataApiResponse response);
-    }
-
-    public List<ScanDataApiResponse> getData() {
-        return data;
     }
 
     public void setData(List<ScanDataApiResponse> data) {
