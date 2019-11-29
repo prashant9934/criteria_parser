@@ -56,7 +56,8 @@ public class CriteriaParserFragment extends Fragment implements ScanViewAdapter.
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.scan_view, container, false);
         viewModel = ViewModelProviders.of(this).get(CriteriaParserViewModel.class);
         lifecycle = new CompositeDisposable();
